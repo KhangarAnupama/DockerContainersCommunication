@@ -33,9 +33,9 @@ From the directory of Dockerfile - `docker build . -t users-mysql`
 https://www.youtube.com/watch?v=FlSup_eelYE     -Create docker image
 https://www.youtube.com/watch?v=fvEWoy1xOvo		-Establish connection between two docker containers
 
-#Steps to establish connection
+# Steps to establish connection
 
-# MYSQL Database
+## MYSQL Database
 Pull mysql images     			: docker pull mysql
 Create mysql container(Run image)
 for 5.6 image					: docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=test -e MYSQL_USER=sa -e MYSQL_PASSWORD=password -d mysql:5.6
@@ -46,13 +46,13 @@ Create image 					: docker build . -t users-mysql
 Create spring-boot container 
 and link with mysql container	: docker run -p 8086:8086 --name users-mysql --link mysql-standalone:mysql -d users-mysql
        
-# Test api on chrome 
+## Test api on chrome 
 Check running containers 
 on terminals			        : docker container ps
 Command to test conn establish   
 (Hit command on chrome)         : http://localhost:8086/all/create 
 
-# Check entry on mysql
+## Check entry on mysql
 docker exec -it <mysql id> bin/bash
 
 - mysql -u root -p
@@ -62,7 +62,7 @@ docker exec -it <mysql id> bin/bash
 - select * from users;
 - TRUNCATE TABLE users;
 
-# Update image
+## Update image
 docker stop users-mysql
 docker container rm <>
 docker image rm <Container id>
